@@ -3,10 +3,13 @@ const {
   addEvent,
   updateEvent,
   deleteEvent,
-  allEvents
+  allEvents,
+  eventsPagination
 } = require("../controllers/event-controller");
 
 const router = express.Router();
+
+router.get("/all", eventsPagination);
 
 router.get("/events", allEvents);
 

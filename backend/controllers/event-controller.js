@@ -32,12 +32,21 @@ exports.eventsPagination = (req, res) => {
     page: page + 1,
     limit: limit
   };
-  Event.find().exec((err, events) => {
+
+  result.previous = {
+    page: page - 1,
+    limit: limit
+  };
+
+  Event.find().exec((err, event) => {
     if (err) {
       return res.status(400).json({ err: "err" });
     }
-    result.events = events.reverse().slice(startIndex, endIndex);
-    res.jon(result.events);
+    result.event = event.reverse().slice(startIndex, endIndex);
+    res.json(result.event);
+    console.log(result);
+    // res.json(event);
+    // console.log(event);
   });
 };
 
