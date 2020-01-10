@@ -1,12 +1,24 @@
 const sgMail = require("@sendgrid/mail");
+const dotenv = require("dotenv");
+dotenv.config();
 
-sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-const msg = {
-  to: "ian.kimble571@gmail.com",
-  from: "greezingart@gmail.com",
-  subject: "testing new sen grid message - Ian",
-  text: "this should be my stuff test from another email ",
-  // html: "<strong>Scrong text doesnt print</strong>",
-  html:
-    "html is where the message actually goes. We need to figure out what text does <br/>crong text doesnt print"
+exports.sendMsg = (req, res) => {
+  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+  let to = req.body.to.toString();
+  let from = req.body.from.toString();
+  let subject = req.body.subject;
+  let html = req.body.text;
+
+  let toString = to.toString();
+  let fromString = from.toString();
+  let subjectString = subject.toString();
+  let textString = html.toString();
+
+  const msg = {
+    to: toString,
+    from: fromString,
+    subject: subjectString,
+    html: textString
+  };
+  sgMail.send(msg);
 };
