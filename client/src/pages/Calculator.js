@@ -1,18 +1,7 @@
 import React, { Component } from "react";
 import { ifStatement } from "@babel/types";
-
-import axios from "axios";
-
+import { Container, Form, Row, Col, Button, Image } from "react-bootstrap";
 import Chart from "react-google-charts";
-
-import Container from "react-bootstrap/Container";
-import Form from "react-bootstrap/Form";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Button from "react-bootstrap/Button";
-import Image from "react-bootstrap/Image";
-
-//import "./calcStyle/calcStyle.css";
 
 import Step1 from "./steps/Step1";
 import Step2 from "./steps/Step2";
@@ -20,7 +9,11 @@ import Step3 from "./steps/Step3";
 import Step4 from "./steps/Step4";
 import Step5 from "./steps/Step5";
 
-import Step6 from "./steps/Step6";
+// Logic for sending user data to email for review
+// import Step6 from "./steps/Step6";
+
+import heroImg from "../images/wallet-2292428_1280.jpg";
+// import confirm from "";
 
 export default class MainCalc extends Component {
   constructor(props) {
@@ -117,14 +110,14 @@ export default class MainCalc extends Component {
     if (this.state.currentStep == 5) {
       this.calculateExpense();
     }
-    if (this.state.currentStep == 6) {
-      this.sendData();
-    }
+    // if (this.state.currentStep == 6) {
+    //   this.sendData();
+    // }
   };
 
   _nextStep = () => {
     let currentStep = this.state.currentStep;
-    currentStep = currentStep >= 6 ? 1 : currentStep + 1;
+    currentStep = currentStep >= 5 ? 1 : currentStep + 1;
     this.setState({
       currentStep: currentStep
     });
@@ -143,8 +136,13 @@ export default class MainCalc extends Component {
     if (currentStep !== 1) {
       return (
         <Button
-          size="sm"
-          style={{ margin: "5px" }}
+          size="lg"
+          style={{
+            margin: "5px",
+            backgroundColor: "#f7a655",
+            border: "none",
+            width: "150px"
+          }}
           className="slide-buttons"
           type="button"
           onClick={this._prevStep}
@@ -158,11 +156,16 @@ export default class MainCalc extends Component {
 
   nextButton() {
     let currentStep = this.state.currentStep;
-    if (currentStep < 6) {
+    if (currentStep < 5) {
       return (
         <Button
-          size="sm"
-          style={{ margin: "5px" }}
+          size="lg"
+          style={{
+            margin: "5px",
+            backgroundColor: "#f7a655",
+            border: "none",
+            width: "150px"
+          }}
           className="slide-buttons"
           type="button"
           onClick={this._nextStep}
@@ -257,16 +260,6 @@ export default class MainCalc extends Component {
 
       email: this.state.email
     };
-
-    axios
-      .post("http://localhost:4001/data/addBudgetData", newBudget)
-      .then(res => console.log(res.data));
-
-    this.setState({
-      displayGraph: false,
-      displayRes: false,
-      displayConfirm: true
-    });
   }
 
   render() {
@@ -277,10 +270,6 @@ export default class MainCalc extends Component {
     let yourgeneralSaves = +this.state.diff * 0.5;
     let yourEmergencySave = +this.state.diff * 0.3;
     let yourRetirementSaves = +this.state.diff * 0.2;
-
-    console.log("your total income: " + yourIncome);
-    console.log("your Expenses: " + yourExpenses);
-    console.log("your left over: " + yourLeftOver);
 
     let fifty = yourgeneralSaves.toFixed(2);
     let thirty = yourEmergencySave.toFixed(2);
@@ -333,12 +322,17 @@ export default class MainCalc extends Component {
     };
 
     return (
-      <Container style={{ textAlign: "center" }}>
+      <Container style={{ textAlign: "center", fontFamily: "Gelasio" }}>
+        <h1 style={{ fontSize: "40px", marginTop: "15px" }}> Calculator</h1>
+        <hr />
         <Row style={{}}>
           <Col style={{ height: "" }} m={6} lg={6} xs={12}>
             <div style={{}}>
-              {this.state.displayHero ? <div style={{}}></div> : null}
-
+              {this.state.displayHero ? (
+                <div style={{}}>
+                  <Image src={heroImg} alt={"calculator image"} fluid />
+                </div>
+              ) : null}
               {this.state.displayGraph ? (
                 <Chart
                   chartType="PieChart"
@@ -422,15 +416,16 @@ export default class MainCalc extends Component {
                 medical={this.medical}
                 other={this.other}
               />
-              <Step6
+              {/* <Step6
                 currentStep={this.state.currentStep}
                 handleChange={this.handleChange}
                 firstName={this.state.firstName}
                 lastName={this.state.lastName}
                 phoneNumber={this.state.phoneNumber}
                 email={this.state.email}
-              />
+              /> */}
             </Form>
+            <br />
             <Row style={{ textAlign: "center", marginTop: "" }}>
               <Col style={{ alignContent: "center" }}>
                 <div className="buttonContain">

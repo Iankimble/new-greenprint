@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Form, Container, Button } from "react-bootstrap";
 import { render } from "@testing-library/react";
 import { sendMsg } from "./api";
+import contactImg from "../images/email-3249062_1280.png";
 
 class Contact extends Component {
   constructor() {
@@ -45,52 +46,92 @@ class Contact extends Component {
 
   contactForm = (name, from, subject, text) => (
     <div>
-      <div style={{ textAlign: "center", marginTop: "15px" }}>
-        <h1>Contact</h1>
-        <p style={{ textAlign: "center", margin: "15px" }}>
-          For financial questions or sugestions to improve our site, Please
-          contact us. We'd love to here from you!
-        </p>
+      <div
+        style={{
+          textAlign: "center",
+          marginTop: "15px",
+          fontFamily: "Gelasio"
+        }}
+      >
+        <h1 style={{ fontSize: "40px" }}>Contact us</h1>
+        <hr />
+        <div>
+          <img
+            src={contactImg}
+            alt={"contact image"}
+            style={{
+              height: "50%",
+              width: "50%",
+              paddingLeft: "2%",
+              paddingRight: "2%"
+            }}
+          />
+        </div>
       </div>
-      <Container>
-        <Form>
+      <Container
+        style={{
+          borderRadius: "25px",
+          padding: "10px",
+          fontFamily: "Gelasio"
+        }}
+      >
+        <Form
+          style={{ margin: "15px", paddingRight: "20%", paddingLeft: "20%" }}
+        >
           <Form.Group>
-            <Form.Label>Name</Form.Label>
             <Form.Control
               type="name"
-              placeholder=""
+              placeholder="Name"
               onChange={this.handleChange("name")}
               value={name}
+              style={{
+                backgroundColor: "#transparent",
+                borderColor: "#f7a655",
+                borderWidth: "1.5px"
+              }}
             />
           </Form.Group>
 
           <Form.Group>
-            <Form.Label>Email address</Form.Label>
             <Form.Control
               type="email"
-              placeholder=""
+              placeholder="Email"
               onChange={this.handleChange("from")}
               value={from}
+              style={{
+                backgroundColor: "transparent",
+                borderColor: "#f7a655",
+                borderWidth: "1.5px"
+              }}
             />
           </Form.Group>
 
           <Form.Group>
-            <Form.Label>Subject</Form.Label>
             <Form.Control
               type="text"
-              placeholder=""
+              placeholder="Subject"
               onChange={this.handleChange("subject")}
               value={subject}
+              style={{
+                backgroundColor: "transparncy",
+                borderColor: "#f7a655",
+                borderWidth: "1.5px"
+              }}
             />
           </Form.Group>
 
           <Form.Group>
-            <Form.Label>Message</Form.Label>
             <Form.Control
               as="textarea"
+              placeholder="message..."
               rows="5"
               onChange={this.handleChange("text")}
               value={text}
+              style={{
+                backgroundColor: "transparency",
+                borderColor: "#f7a655",
+                borderWidth: "1.5px"
+              }}
             />
           </Form.Group>
         </Form>
@@ -103,7 +144,15 @@ class Contact extends Component {
         >
           <Button
             size="lg"
-            style={{ width: "200px", margin: "5px" }}
+            style={{
+              width: "300px",
+              margin: "5px",
+              backgroundColor: "#7022c3",
+              fontFamily: "Gelasio",
+              borderStyle: "solid",
+              borderColor: "white",
+              borderWidth: "2px"
+            }}
             onClick={this.submit}
           >
             Send

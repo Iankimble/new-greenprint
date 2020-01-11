@@ -1,15 +1,37 @@
 import React from "react";
 import { Jumbotron, Container } from "react-bootstrap";
+import aboutImg from "../images/piggy-bank-2889042_1920.jpg";
 
 const About = () => (
   <div>
-    <div>
-      <h1 style={{ textAlign: "center", marginTop: "15px" }}>
+    <div
+      style={{
+        textAlign: "center",
+        marginTop: "15px",
+        fontFamily: "Gelasio"
+      }}
+    >
+      <h1 style={{ textAlign: "center", marginTop: "15px", fontSize: "40px" }}>
         About Greenprint
       </h1>
-      <Jumbotron fluid style={{ height: "50vh", margin: "50px" }}>
-        <Container style={{ textAlign: "center" }}></Container>
-      </Jumbotron>
+      <hr />
+      <div
+        style={{
+          alignContent: "center"
+        }}
+      >
+        <img
+          src={aboutImg}
+          alt={"about image"}
+          style={{
+            height: "45vh",
+            width: "50vh",
+            display: "block",
+            marginLeft: "auto",
+            marginRight: "auto"
+          }}
+        />
+      </div>
       <p style={{ height: "", margin: "50px" }}>
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
         tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim

@@ -7,7 +7,7 @@ const Step5 = props => {
     return null;
   }
   return (
-    <div>
+    <div style={{ fontFamily: "Gelasio" }}>
       <h2> Personal Expenses</h2>
       <label style={{ fontSize: "15px" }}>
         {" "}
@@ -62,8 +62,8 @@ const Step5 = props => {
         Calculate
       </button>
       <br />
-      For a more personalized experience click 'next' to provide contact
-      information and a trained financial advisor will contact you soon.
+      {/* For a more personalized experience click 'next' to provide contact
+      information and a trained financial advisor will contact you soon. */}
       <br />
       <br />
     </div>
