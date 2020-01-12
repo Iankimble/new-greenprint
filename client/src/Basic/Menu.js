@@ -2,6 +2,7 @@ import React from "react";
 import { Link, withRouter } from "react-router-dom";
 
 import { Navbar, Nav, Button } from "react-bootstrap";
+import logo from "../images/greenprint_revised_logo.png";
 
 const Menu = () => (
   <>
@@ -15,6 +16,15 @@ const Menu = () => (
       }}
     >
       <Navbar.Brand style={{ fontSize: "30px" }}>
+        <img
+          src={logo}
+          style={{
+            height: "75px",
+            width: "75px",
+            margin: "2px",
+            padding: "4px"
+          }}
+        />
         <Link to="/" style={{ color: "white" }}>
           Greenprint
         </Link>

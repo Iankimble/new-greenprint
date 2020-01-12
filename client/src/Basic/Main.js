@@ -8,12 +8,14 @@ const Main = () => (
     <img
       src={mainImg}
       style={{
-        height: "65vh",
+        height: "68vh",
         width: "90vw",
-        display: "block",
+        display: "flex",
         marginLeft: "auto",
         marginRight: "auto",
-        marginTop: "15px"
+        marginTop: "15px",
+        paddingLeft: "2px",
+        paddingRight: "2px"
       }}
     />
     <Container

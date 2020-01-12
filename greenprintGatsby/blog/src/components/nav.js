@@ -2,13 +2,26 @@ import React from "react"
 import Link from "gatsby-link"
 import { Nav, Navbar } from "react-bootstrap"
 
+import logo from "../images/greenprint_revised_logo.png"
+
 export const nav = () => (
   <div style={{ background: "grey", padding: "0px" }}>
-    <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Navbar.Brand>
-        <Link to="/">Greenprint</Link>
+    <Navbar collapseOnSelect expand="lg" style={{ backgroundColor: "#7022c3" }}>
+      <Navbar.Brand style={{ textAlign: "center" }}>
+        <img
+          src={logo}
+          style={{
+            height: "75px",
+            width: "75px",
+            margin: "2px",
+            padding: "4px",
+          }}
+        />
+        <Link to="/" style={{ color: "white" }}>
+          The Greenprint Blog
+        </Link>
       </Navbar.Brand>
-      <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+      {/* <Navbar.Toggle aria-controls="responsive-navbar-nav" />
       <Navbar.Collapse id="responsive-navbar-nav">
         <Nav className="mr-auto">
           <Nav.Link>
@@ -24,7 +37,7 @@ export const nav = () => (
             <Link to="/contact">Contact</Link>
           </Nav.Link>
         </Nav>
-      </Navbar.Collapse>
+      </Navbar.Collapse> */}
     </Navbar>
   </div>
 )
